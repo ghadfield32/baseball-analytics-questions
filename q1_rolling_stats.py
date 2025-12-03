@@ -1,3 +1,18 @@
+# ---
+# ## Q1 – Streaming Pitch Data → Rolling Features
+
+# **Problem**: Maintain per-pitcher rolling statistics over the last 100 pitches from a stream of pitch events.
+
+# **Requirements**:
+# - Rolling average velocity
+# - Rolling zone rate (is_in_zone)
+# - Rolling whiff rate (is_whiff over swings)
+# - O(1) amortized update time
+# - Bounded memory
+# - Handle multiple pitchers interleaved
+
+
+
 """
 Q1 - Streaming Pitch Data → Rolling Features
 
@@ -5,8 +20,8 @@ Maintain per-pitcher rolling statistics over the last 100 pitches.
 O(1) amortized updates with bounded memory.
 """
 
-from collections import deque, defaultdict
 import random
+from collections import defaultdict, deque
 
 
 class PitcherRollingStats:
