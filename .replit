@@ -4,3 +4,34 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+packages = ["cairo", "ffmpeg-full", "freetype", "ghostscript", "glibcLocales", "gobject-introspection", "gtk3", "openssl", "pkg-config", "qhull", "tcl", "tk"]
+
+[workflows]
+
+[[workflows.workflow]]
+name = "run workflow"
+mode = "sequential"
+author = 50604602
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python q1_rolling_stats.py"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python q2.py"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python q3.py"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python q4.py"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python q5.py"
